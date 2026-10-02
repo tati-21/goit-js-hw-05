@@ -1,26 +1,100 @@
 // todo
-// todo Задача 3. Перевірка спаму
+// todo Задача 3. Сортування за кількістю друзів
 
-// todo Виконуй це завдання у файлі task-3.js
+// todo Напиши стрілочну функцію sortByDescendingFriendCount(users) , яка прийматиме один параметр users — масив об’єктів користувачів.
 
-// todo Функція checkForSpam(message) приймає рядок (параметр message), перевіряє його на вміст заборонених слів spam і sale, і повертає результат перевірки. Слова в рядку параметра message можуть бути в довільному регістрі, наприклад SPAM або sAlE.
+// todo Функція має повертати масив усіх користувачів, відсортованих за спаданням кількостій їх друзів (властивість friends).
 
-// todo Доповни код функції таким чином, що:
-
-// todo Якщо знайдено заборонене слово (spam або sale), то функція повертає буль true
-// todo Якщо в рядку відсутні заборонені слова, функція повертає буль false
-
-function checkForSpam(message) {
-  const normalizedMessage = message.toLowerCase();
-  return (
-    normalizedMessage.includes("spam") || normalizedMessage.includes("sale")
+const sortByDescendingFriendCount = users => {
+  return users.toSorted(
+    (firstUser, secondUser) =>
+      secondUser.friends.length - firstUser.friends.length
   );
-}
+};
 
-console.log(checkForSpam("Latest technology news")); // false
-console.log(checkForSpam("JavaScript weekly newsletter")); // false
-console.log(checkForSpam("Get best sale offers now!")); // true
-console.log(checkForSpam("Amazing SalE, only tonight!")); // true
-console.log(checkForSpam("Trust me, this is not a spam message")); // true
-console.log(checkForSpam("Get rid of sPaM emails. Our book in on sale!")); // true
-console.log(checkForSpam("[SPAM] How to earn fast money?")); // true
+// * Перевірка
+
+console.log(
+  sortByDescendingFriendCount([
+    {
+      name: 'Moore Hensley',
+      friends: ['Sharron Pace'],
+      gender: 'male',
+    },
+    {
+      name: 'Sharlene Bush',
+      friends: ['Briana Decker', 'Sharron Pace'],
+      gender: 'female',
+    },
+    {
+      name: 'Ross Vazquez',
+      friends: ['Marilyn Mcintosh', 'Padilla Garrison', 'Naomi Buckner'],
+      gender: 'male',
+    },
+    {
+      name: 'Elma Head',
+      friends: ['Goldie Gentry', 'Aisha Tran'],
+      gender: 'female',
+    },
+    {
+      name: 'Carey Barr',
+      friends: ['Jordan Sampson', 'Eddie Strong'],
+      gender: 'male',
+    },
+    {
+      name: 'Blackburn Dotson',
+      friends: ['Jacklyn Lucas', 'Linda Chapman'],
+      gender: 'male',
+    },
+    {
+      name: 'Sheree Anthony',
+      friends: ['Goldie Gentry', 'Briana Decker'],
+      gender: 'female',
+    },
+  ])
+);
+// [
+//   {
+//     name: "Ross Vazquez",
+//     friends: ["Marilyn Mcintosh", "Padilla Garrison", "Naomi Buckner"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sharlene Bush",
+//     friends: ["Briana Decker", "Sharron Pace"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Elma Head",
+//     friends: ["Goldie Gentry", "Aisha Tran"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Carey Barr",
+//     friends: ["Jordan Sampson", "Eddie Strong"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Blackburn Dotson",
+//     friends: ["Jacklyn Lucas", "Linda Chapman"],
+//     gender: "male"
+//   },
+//   {
+//     name: "Sheree Anthony",
+//     friends: ["Goldie Gentry", "Briana Decker"],
+//     gender: "female"
+//   },
+//   {
+//     name: "Moore Hensley",
+//     friends: ["Sharron Pace"],
+//     gender: "male"
+//   }
+// ]
+
+// На що буде звертати увагу ментор при перевірці:
+
+// Оголошена змінна sortByDescendingFriendCount
+// Змінній sortByDescendingFriendCount присвоєна стрілочна функція з параметром (users)
+// Для перебирання параметра users використаний метод toSorted()
+// Виклик функції із зазначеним масивом users повертає новий масив користувачів, відсортований за спаданням кількості їхніх друзів
+// Виклик функції з випадковими, але валідними аргументами повертає правильне значення

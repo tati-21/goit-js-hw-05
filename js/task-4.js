@@ -1,50 +1,72 @@
 // todo
-// todo Задача 4. Доставка товару
+// todo Задача 4. Загальний баланс
 
-// todo Оголоси функцію getShippingCost(country), яка повинна перевіряти можливість доставки товару в країну користувача (параметр country) і повертати повідомлення про результат. Обов'язково використовуй інструкцію switch.
+// todo Напиши стрілочну функцію getTotalBalanceByGender(users, gender), яка прийматиме два параметра:
 
-// todo Формат рядка, що повертається "Shipping to <country> will cost <price> credits", де замість <country> і <price> необхідно підставити відповідні значення.
+// todo перший параметр users — масив об’єктів користувачів,
+// todo другий параметр gender — рядок, що зберігає стать.
+// todo Функція має використовувати ланцюжок виклику методів та повертати загальний баланс користувачів (властивість balance), стать яких (властивість gender) збігається зі значенням параметра gender.
 
-// todo Список країн і вартість доставки:
+const getTotalBalanceByGender = (users, gender) => {
+  return users
+    .filter(user => user.gender === gender)
+    .reduce((totalBalance, client) => {
+      return totalBalance + client.balance;
+    }, 0);
+};
 
-// todo China — 100 кредитів
-// todo Chile — 250 кредитів
-// todo Australia — 170 кредитів
-// todo Jamaica — 120 кредитів
+// * Дано з задачі:
 
-// todo Зі списку видно, що доставка можлива не скрізь. Якщо зазначена країна відсутня у списку, то функція повинна повернути рядок "Sorry, there is no delivery to your country".
+const clients = [
+  {
+    name: 'Moore Hensley',
+    gender: 'male',
+    balance: 2811,
+  },
+  {
+    name: 'Sharlene Bush',
+    gender: 'female',
+    balance: 3821,
+  },
+  {
+    name: 'Ross Vazquez',
+    gender: 'male',
+    balance: 3793,
+  },
+  {
+    name: 'Elma Head',
+    gender: 'female',
+    balance: 2278,
+  },
+  {
+    name: 'Carey Barr',
+    gender: 'male',
+    balance: 3951,
+  },
+  {
+    name: 'Blackburn Dotson',
+    gender: 'male',
+    balance: 1498,
+  },
+  {
+    name: 'Sheree Anthony',
+    gender: 'female',
+    balance: 2764,
+  },
+];
 
-// todo Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її роботи.
+// * Перевірка
 
-function getShippingCost(country) {
-  let price;
+console.log(getTotalBalanceByGender(clients, 'male')); // 12053
 
-  switch (country) {
-    case "China":
-      price = 100;
-      break;
+console.log(getTotalBalanceByGender(clients, 'female')); // 8863
 
-    case "Chile":
-      price = 250;
-      break;
+// На що буде звертати увагу ментор при перевірці:
 
-    case "Australia":
-      price = 170;
-      break;
-
-    case "Jamaica":
-      price = 120;
-      break;
-
-    default:
-      return "Sorry, there is no delivery to your country";
-  }
-  return `Shipping to ${country} will cost ${price} credits`;
-}
-
-console.log(getShippingCost("Australia")); // "Shipping to Australia will cost 170 credits"
-console.log(getShippingCost("Germany")); // "Sorry, there is no delivery to your country"
-console.log(getShippingCost("China")); // "Shipping to China will cost 100 credits"
-console.log(getShippingCost("Chile")); // "Shipping to Chile will cost 250 credits"
-console.log(getShippingCost("Jamaica")); // "Shipping to Jamaica will cost 120 credits"
-console.log(getShippingCost("Sweden")); // "Sorry, there is no delivery to your country"
+// Оголошена змінна getTotalBalanceByGender
+// Змінній getTotalBalanceByGender присвоєна стрілочна функція з параметрами (users, gender)
+// У тілі функції використовується ланцюжок методів у правильному порядку
+// Значення параметра users не змінюється
+// Якщо значення параметра gender — це рядок "male", функція повертає число 12053
+// Якщо значення параметра gender — це рядок "female", функція повертає число 8863
+// Виклик функції з випадковими, але валідними аргументами повертає правильне значення

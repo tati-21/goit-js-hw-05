@@ -1,29 +1,60 @@
-// todo Задача 1. Замовлення дроїдів
+// todo
+// todo Задача 1. Імена користувачів
 
-// todo Станція з продажу ремонтних дроїдів готова до запуску, залишилося написати програмне забезпечення для відділу продажів. Оголоси функцію makeTransaction(quantity, pricePerDroid, customerCredits), яка складає та повертає повідомлення про купівлю ремонтних дроїдів.
+// todo Напиши стрілочну функцію getUserNames(users), яка прийматиме один параметр users — масив об’єктів користувачів. Функція має повертати масив імен усіх користувачів (властивість name) із масиву users.
 
-// todo Вона оголошує три параметри, значення яких будуть задаватися під час її виклику:
+const getUserNames = users => users.map(user => user.name);
 
-// todo quantity — кількість замовлених дроїдів
-// todo pricePerDroid — ціна одного дроїда
-// todo customerCredits — сума коштів на рахунку клієнта
+//* Перевірка
 
-// todo Доповни функцію таким чином:
+//* Візьми код нижче і встав після оголошення своєї функції для перевірки коректності її роботи. У консоль будуть виведені результати її викликів.
 
-// todo Оголоси змінну для зберігання загальної суми замовлення (загальна вартість усіх замовлених дроїдів) і задай їй вираз розрахунку цієї суми.
-// todo Додай перевірку, чи зможе клієнт оплатити замовлення: якщо сума до сплати перевищує кількість кредитів на рахунку клієнта, функція має повертати рядок "Insufficient funds!" в іншому випадку функція має повертати рядок "You ordered <quantity> droids worth <totalPrice> credits!", де <quantity> це кількість замовлених дроїдів, а <totalPrice> це їх загальна вартість.
+console.log(
+  getUserNames([
+    {
+      name: 'Moore Hensley',
+      email: 'moorehensley@indexia.com',
+      balance: 2811,
+    },
+    {
+      name: 'Sharlene Bush',
+      email: 'sharlenebush@tubesys.com',
+      balance: 3821,
+    },
+    {
+      name: 'Ross Vazquez',
+      email: 'rossvazquez@xinware.com',
+      balance: 3793,
+    },
+    {
+      name: 'Elma Head',
+      email: 'elmahead@omatom.com',
+      balance: 2278,
+    },
+    {
+      name: 'Carey Barr',
+      email: 'careybarr@nurali.com',
+      balance: 3951,
+    },
+    {
+      name: 'Blackburn Dotson',
+      email: 'blackburndotson@furnigeer.com',
+      balance: 1498,
+    },
+    {
+      name: 'Sheree Anthony',
+      email: 'shereeanthony@kog.com',
+      balance: 2764,
+    },
+  ])
+); // ["Moore Hensley", "Sharlene Bush", "Ross Vazquez", "Elma Head", "Carey Barr", "Blackburn Dotson", "Sheree Anthony"]
 
-function makeTransaction(quantity, pricePerDroid, customerCredits) {
-  const totalPrice = quantity * pricePerDroid;
-  if (totalPrice <= customerCredits) {
-    return `You ordered ${quantity} droids worth ${totalPrice} credits!`;
-  } else {
-    return "Insufficient funds!";
-  }
-}
+// Залиш цей код для перевірки ментором.
 
-console.log(makeTransaction(5, 3000, 23000)); // "You ordered 5 droids worth 15000 credits!"
-console.log(makeTransaction(3, 1000, 15000)); // "You ordered 3 droids worth 3000 credits!"
-console.log(makeTransaction(10, 5000, 8000)); // "Insufficient funds!"
-console.log(makeTransaction(8, 2000, 10000)); // "Insufficient funds!"
-console.log(makeTransaction(10, 500, 5000)); // "You ordered 10 droids worth 5000 credits!"
+// На що буде звертати увагу ментор при перевірці:
+
+// Оголошена змінна getUserNames
+// Змінній getUserNames присвоєна стрілочна функція з параметром (users).
+// Для перебирання параметра users використовується метод map()
+// Виклик функції із зазначеним масивом користувачів повертає масив ["Moore Hensley", "Sharlene Bush", "Ross Vazquez", "Elma Head", "Carey Barr", "Blackburn Dotson", "Sheree Anthony"]
+// Виклик функції з випадковими, але валідними аргументами повертає правильне значення
